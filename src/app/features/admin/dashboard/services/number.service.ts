@@ -1,12 +1,15 @@
 import { inject, Injectable, signal, Signal } from '@angular/core';
-import { PhoneNumber } from '../../../../shared/interfaces/phone-number.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { PhoneNumber } from '../../../../shared/interfaces/phone-number.interface';
+import { environment } from '../../../../../environments/environment';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class NumberService {
+  private apiUrl = environment.apiUrl;
   private readonly httpClient = inject(HttpClient);
   private numbersSignal = signal<PhoneNumber[]>([]);
   private loadingStateSignal = signal<'idle' | 'loading' | 'error' | 'success'>('idle');
@@ -16,14 +19,13 @@ export class NumberService {
   }
 
   loadNumbersFromServer(): void {
-    const apiUrl = 'http://localhost:3000/api/v1/phone-info';
     const headers = new HttpHeaders({
       'Authorization': 'Bearer mysecrettoken', // TODO get from auth service, need to add interceptor
     });
 
     this.loadingStateSignal.set('loading');
 
-    this.httpClient.get<PhoneNumber[]>(apiUrl, { headers }).subscribe({
+    this.httpClient.get<PhoneNumber[]>(`${this.apiUrl}/phone-info`, { headers }).subscribe({
       next: (numbers) => {
         this.numbersSignal.set(numbers);
         this.loadingStateSignal.set('success');
