@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Langs } from '../constants/langs.enum';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TranslationService {
   private translations: any = {};
-  private currentLang: string = 'en';
+  private currentLang: string = Langs.en;
 
   constructor(private http: HttpClient) {}
 
