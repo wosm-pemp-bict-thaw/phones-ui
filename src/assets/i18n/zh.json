@@ -1,0 +1,22 @@
+{
+    "dashboard": {
+        "title": "仪表板",
+        "subtitle": "欢迎来到仪表板",
+        "numbers_data": {
+            "id": "ID",
+            "number": "数字",
+            "status": "地位",
+            "messages": "消息",
+            "inactive": "不活跃",
+            "active": "积极的"
+        },
+        "ui": {
+            "filter": "按状态过滤",
+            "all": "全部",
+            "toast": {
+                "statusChanged": "状态修改成功",
+                "success": "成功"
+            }
+        }
+    }
+}

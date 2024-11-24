@@ -1,0 +1,12 @@
+<div class="d-flex align-items-center justify-content-between">
+  <label for="statusFilter" class="form-label fw-bold text-primary mb-0 me-3">{{ 'dashboard.ui.filter' | translate }}</label>
+  <select
+    id="statusFilter"
+    class="form-select w-auto"
+    (change)="onFilterChange($event)"
+  >
+    <option value="all">{{ 'dashboard.ui.all' | translate }}</option>
+    <option value="active">{{ 'dashboard.numbers_data.active' | translate }}</option>
+    <option value="inactive">{{ 'dashboard.numbers_data.inactive' | translate }}</option>
+  </select>
+</div>

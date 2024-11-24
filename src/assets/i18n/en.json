@@ -1,0 +1,22 @@
+{
+    "dashboard": {
+        "title": "Dashboard",
+        "subtitle": "Welcome to the dashboard",
+        "numbers_data": {
+            "id": "ID",
+            "number": "Number",
+            "status": "Status",
+            "messages": "Messages",
+            "inactive": "Inactive",
+            "active": "Active"
+        },
+        "ui": {
+            "filter": "Filter by status",
+            "all": "All",
+            "toast": {
+                "statusChanged": "Status changed successfully",
+                "success": "Success"
+            }
+        }
+    }
+}

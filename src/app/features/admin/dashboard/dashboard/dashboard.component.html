@@ -1,0 +1,38 @@
+<div class="container py-5">
+  @defer (when isSuccess()) {
+    <div class="row mb-4">
+      <div class="col-12 col-lg-6">
+        <app-filter (statusChange)="onStatusChange($event)"></app-filter>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <app-number-list [currentFilter]="currentFilter"></app-number-list>
+      </div>
+    </div>
+  } @loading {
+    <div class="row text-center">
+      <div class="col-12">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="text-muted">Loading data...</p>
+      </div>
+    </div>
+  } @placeholder {
+    <div class="row text-center">
+      <div class="col-12">
+        <p class="text-muted">Initializing...</p>
+      </div>
+    </div>
+  }
+
+  <ng-container *ngIf="hasError()">
+    <div class="row text-center">
+      <div class="col-12">
+        <p class="text-danger fw-bold">Failed to load data. Please try again later.</p>
+        <button class="btn btn-primary mt-3" (click)="retry()">Retry</button>
+      </div>
+    </div>
+  </ng-container>
+</div>

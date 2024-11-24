@@ -1,0 +1,62 @@
+<table class="table table-hover shadow-sm rounded">
+  <thead class="table-primary">
+    <tr>
+      <th (click)="setSort('id')" class="sortable">
+        {{ 'dashboard.numbers_data.id' | translate }}
+        <span *ngIf="sortColumn() === 'id'">
+          {{ sortDirection() === 'asc' ? '▲' : '▼' }}
+        </span>
+      </th>
+      <th (click)="setSort('number')" class="sortable">
+        {{ 'dashboard.numbers_data.number' | translate }}
+        <span *ngIf="sortColumn() === 'number'">
+          {{ sortDirection() === 'asc' ? '▲' : '▼' }}
+        </span>
+      </th>
+      <th (click)="setSort('messages')" class="sortable">
+        {{ 'dashboard.numbers_data.messages' | translate }}
+        <span *ngIf="sortColumn() === 'messages'">
+          {{ sortDirection() === 'asc' ? '▲' : '▼' }}
+        </span>
+      </th>
+      <th>
+        {{ 'dashboard.numbers_data.status' | translate }}
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let number of sortedNumbers(); trackBy: trackByNumber">
+      <td>{{ number.id }}</td>
+      <td>{{ number.number }}</td>
+      <td>{{ number.messages }}</td>
+      <td>
+        <span
+          class="badge"
+          [ngClass]="{
+            'bg-success': number.status === 'active',
+            'bg-danger': number.status === 'inactive'
+          }"
+        >
+          {{ number.status }}
+        </span>
+      </td>
+      <td>
+        <button
+          class="btn btn-sm"
+          [ngClass]="{
+            'btn-success': number.status === 'inactive',
+            'btn-danger': number.status === 'active'
+          }"
+          (click)="toggleStatus(number)"
+        >
+          {{
+            number.status === 'active'
+              ? ('dashboard.numbers_data.inactive' | translate)
+              : ('dashboard.numbers_data.active' | translate)
+          }}
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
