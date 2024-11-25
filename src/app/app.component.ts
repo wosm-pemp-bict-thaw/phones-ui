@@ -1,8 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TranslationService } from './shared/services/translation.service';
 import { LanguageSwitcherComponent } from './shared/components/language-switcher/language-switcher.component';
-import { Langs } from './shared/constants/langs.enum';
 import { ThemeToggleComponent } from './shared/components/theme-toggle/theme-toggle.component';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
@@ -21,13 +19,7 @@ import { AuthService } from './shared/services/auth.service';
   styleUrl: './app.component.css',
   standalone: true,
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   private authService = inject(AuthService);
   isAuthenticated = this.authService.isAuthenticated;
-
-  constructor(private translationService: TranslationService) {}
-
-  ngOnInit() {
-    this.translationService.loadTranslations(Langs.en);
-  }
 }

@@ -8,10 +8,12 @@ import { Translations } from '../interfaces/translations.interface';
 })
 export class TranslationService {
   private translations: Translations = {};
-  private currentLangSignal: WritableSignal<Langs> = signal(Langs.en);
+  private currentLangSignal: WritableSignal<Langs>;
 
   constructor(private http: HttpClient) {
-    this.updateTextDirection(Langs.en);
+    const savedLang = this.getSavedLanguage();
+    this.currentLangSignal = signal(savedLang);
+    this.setLanguage(savedLang);
   }
 
   loadTranslations(lang: Langs): Promise<void> {
@@ -22,7 +24,9 @@ export class TranslationService {
         if (data) {
           this.translations = data;
           this.updateTextDirection(lang);
+          console.log('Translations loaded for language:', lang);
           this.currentLangSignal.set(lang);
+          this.saveLanguage(lang);
         } else {
           console.error('No translations found for language:', lang);
         }
@@ -63,5 +67,16 @@ export class TranslationService {
     const isRtl = lang === Langs.ar;
     document.documentElement.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
     document.documentElement.setAttribute('lang', lang);
+  }
+
+  private getSavedLanguage(): Langs {
+    const savedLang = localStorage.getItem('language') as Langs | null;
+    return savedLang && Object.values(Langs).includes(savedLang)
+      ? savedLang
+      : Langs.en; // Fallback to English
+  }
+
+  private saveLanguage(lang: Langs): void {
+    localStorage.setItem('language', lang);
   }
 }
