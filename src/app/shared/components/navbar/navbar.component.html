@@ -1,0 +1,47 @@
+<nav *ngIf="isAuthenticated()" class="navbar navbar-expand-lg navbar-light bg-light px-3" [ngClass]="{ 'bg-dark navbar-dark': isDarkTheme(), 'bg-light navbar-light': !isDarkTheme() }">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/dashboard">
+        Phones
+      </a>
+  
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="flag-icon flag-icon-us"></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+              <li>
+                <a class="dropdown-item">English</a>
+              </li>
+            </ul>
+          </li>
+  
+          <li class="nav-item">
+            <button class="btn btn-outline-secondary nav-link" (click)="toggleTheme()">
+              <i class="bi bi-moon"></i>
+            </button>
+          </li>
+  
+          <li class="nav-item">
+            <button class="btn btn-outline-danger nav-link" (click)="logout()">
+              <i class="bi bi-box-arrow-right"></i> Logout
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  

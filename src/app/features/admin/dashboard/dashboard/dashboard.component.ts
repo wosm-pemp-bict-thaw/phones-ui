@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { NumberListComponent } from '../number-list/number-list.component';
 import { NumberService } from '../services/number.service';
 import { FilterComponent } from '../filter/filter.component';
+import { TranslatePipe } from '../../../../shared/pipes/translate.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [CommonModule, NumberListComponent, FilterComponent],
+  imports: [CommonModule, NumberListComponent, FilterComponent, TranslatePipe],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
   standalone: true,
@@ -18,7 +20,10 @@ export class DashboardComponent implements OnInit {
 
   currentFilter = signal<'all' | 'active' | 'inactive'>('all');
 
-  constructor(private numberService: NumberService) {}
+  constructor(
+    private router: Router,
+    private numberService: NumberService
+  ) {}
   ngOnInit(): void {
     this.numberService.loadNumbersFromServer();
   }
@@ -29,5 +34,10 @@ export class DashboardComponent implements OnInit {
 
   retry(): void {
     this.numberService.loadNumbersFromServer();
+  }
+
+  logout(): void {
+    localStorage.removeItem('authToken');
+    this.router.navigate(['/login']);
   }
 }

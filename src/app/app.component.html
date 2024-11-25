@@ -1,10 +1,12 @@
-<app-language-switcher></app-language-switcher>
-<app-theme-toggle></app-theme-toggle>
+<app-language-switcher *ngIf="!isAuthenticated()"></app-language-switcher>
+<app-theme-toggle *ngIf="!isAuthenticated()"></app-theme-toggle>
 
-<div class="text-center py-5">
+<app-navbar *ngIf="isAuthenticated()"></app-navbar>
+
+<!-- <div class="text-center py-5">
 <h1 class="display-4 text-primary">{{ 'dashboard.title' | translate }}</h1>
   <p class="lead text-secondary">{{ 'dashboard.subtitle' | translate }}</p>
 </div>
 
-<app-dashboard></app-dashboard>
+<app-dashboard></app-dashboard> -->
 <router-outlet></router-outlet>
