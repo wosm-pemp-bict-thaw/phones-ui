@@ -32,10 +32,6 @@
                     <li *ngFor="let lang of availableLanguages">
                         <button
                           class="btn btn-sm d-flex align-items-center w-100"
-                          [ngClass]="{
-                            'btn-light': theme,
-                            'btn-dark text-light': theme
-                          }"
                           (click)="changeLanguage(lang.code)"
                         >
                           <span class="flag-icon me-2"></span>

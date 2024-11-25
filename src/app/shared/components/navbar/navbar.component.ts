@@ -2,10 +2,9 @@ import { Component, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslationService } from '../../services/translation.service';
 import { ThemeService } from '../../services/theme.service';
-import { Langs, LangNames, LangIcons, AVAILABLE_LANGUAGES, AVAILABLE_LANGUAGES_DICT } from '../../constants/langs.enum';
+import { Langs, AVAILABLE_LANGUAGES } from '../../constants/langs.enum';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
-import { Themes } from '../../constants/themes.enum';
 
 @Component({
   selector: 'app-navbar',
@@ -22,15 +21,7 @@ export class NavbarComponent {
 
   isAuthenticated = computed(() => this.authService.isAuthenticated());
   currentTheme = this.themeService.getCurrentTheme;
-  theme = false;
-  // get isDarkTheme(): boolean {
-  //   return this.theme === Themes.DARK;
-  // }
-  // get isLightTheme(): boolean {
-  //   return this.theme === Themes.LIGHT;
-  // }
   currentLang = this.translate.currentLang;
-
   availableLanguages = AVAILABLE_LANGUAGES;
   currentLangDetails = this.translate.currentLangDetails;
 

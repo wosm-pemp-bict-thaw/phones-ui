@@ -1,12 +1,9 @@
-import { Component, computed, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { DashboardComponent } from './features/admin/dashboard/dashboard/dashboard.component';
 import { TranslationService } from './shared/services/translation.service';
-import { TranslatePipe } from './shared/pipes/translate.pipe';
 import { LanguageSwitcherComponent } from './shared/components/language-switcher/language-switcher.component';
 import { Langs } from './shared/constants/langs.enum';
 import { ThemeToggleComponent } from './shared/components/theme-toggle/theme-toggle.component';
-import { ThemeService } from './shared/services/theme.service';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { AuthService } from './shared/services/auth.service';
