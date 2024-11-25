@@ -1,28 +1,34 @@
-import { Injectable } from '@angular/core';
+import { computed, Injectable, signal, WritableSignal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Langs } from '../constants/langs.enum';
+import { AVAILABLE_LANGUAGES_DICT, Langs } from '../constants/langs.enum';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TranslationService {
   private translations: any = {};
-  private currentLang: string = Langs.en;
+  private currentLangSignal: WritableSignal<Langs> = signal(Langs.en);
 
   constructor(private http: HttpClient) {}
 
-  loadTranslations(lang: string): Promise<void> {
+  loadTranslations(lang: Langs): Promise<void> {
     return this.http
       .get(`./assets/i18n/${lang}.json`)
       .toPromise()
       .then((data) => {
         this.translations = data;
-        this.currentLang = lang;
+        this.currentLangSignal.set(lang);
       })
       .catch(() => {
         console.error(`Could not load translations for language: ${lang}`);
       });
   }
+
+  get currentLang() {
+    return this.currentLangSignal.asReadonly();
+  }
+  
+  currentLangDetails = computed(() => AVAILABLE_LANGUAGES_DICT[this.currentLangSignal()]);
 
   translate(key: string): string {
     const keys = key.split('.');
@@ -36,7 +42,7 @@ export class TranslationService {
     return result;
   }
 
-  setLanguage(lang: string): Promise<void> {
+  setLanguage(lang: Langs): Promise<void> {
     return this.loadTranslations(lang);
   }
 }

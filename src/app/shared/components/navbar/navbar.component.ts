@@ -2,7 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslationService } from '../../services/translation.service';
 import { ThemeService } from '../../services/theme.service';
-import { Langs, LangNames, LangIcons } from '../../constants/langs.enum';
+import { Langs, LangNames, LangIcons, AVAILABLE_LANGUAGES, AVAILABLE_LANGUAGES_DICT } from '../../constants/langs.enum';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 
@@ -21,19 +21,28 @@ export class NavbarComponent {
 
   isAuthenticated = computed(() => this.authService.isAuthenticated());
   isDarkTheme = this.themeService.getCurrentTheme;
+  currentLang = this.translate.currentLang;
 
-  availableLanguages = [
-    { code: Langs.en, name: LangNames.en, flag: LangIcons.en },
-    { code: Langs.ar, name: LangNames.ar, flag: LangIcons.ar },
-    { code: Langs.ru, name: LangNames.ru, flag: LangIcons.ru },
-    { code: Langs.zh, name: LangNames.zh, flag: LangIcons.zh },
-  ];
+  availableLanguages = AVAILABLE_LANGUAGES;
+  currentLangDetails = this.translate.currentLangDetails;
+
+  toggleDropdown(event: Event): void {
+    const element = event.target as HTMLElement;
+    const dropdown = element.closest('.dropdown');
+    if (dropdown) {
+      dropdown.classList.toggle('show');
+      const menu = dropdown.querySelector('.dropdown-menu') as HTMLElement;
+      if (menu) {
+        menu.classList.toggle('show');
+      }
+    }
+  }
 
   toggleTheme(): void {
     this.themeService.toggleTheme();
   }
 
-  changeLanguage(lang: string): void {
+  changeLanguage(lang: Langs): void {
     this.translate.setLanguage(lang);
   }
 

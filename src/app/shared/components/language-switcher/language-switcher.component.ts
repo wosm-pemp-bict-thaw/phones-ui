@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
 import { CommonModule } from '@angular/common';
-import { Langs, LangNames, LangIcons } from '../../constants/langs.enum';
+import { AVAILABLE_LANGUAGES, Langs } from '../../constants/langs.enum';
 
 @Component({
   selector: 'app-language-switcher',
@@ -12,12 +12,7 @@ import { Langs, LangNames, LangIcons } from '../../constants/langs.enum';
 })
 export class LanguageSwitcherComponent {
   isMenuOpen = false;
-  availableLanguages = [
-    { code: Langs.en, name: LangNames.en, flag: LangIcons.en },
-    { code: Langs.ar, name: LangNames.ar, flag: LangIcons.ar },
-    { code: Langs.ru, name: LangNames.ru, flag: LangIcons.ru },
-    { code: Langs.zh, name: LangNames.zh, flag: LangIcons.zh },
-  ];
+  availableLanguages = AVAILABLE_LANGUAGES;
 
   constructor(private translate: TranslationService) {}
 
@@ -25,7 +20,7 @@ export class LanguageSwitcherComponent {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  changeLanguage(lang: string): void {
+  changeLanguage(lang: Langs): void {
     this.translate.setLanguage(lang);
     this.isMenuOpen = false;
   }
