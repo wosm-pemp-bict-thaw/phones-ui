@@ -11,10 +11,10 @@ import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 
 import { NumberService } from '../services/number.service';
-import { PhoneNumber } from '../../../../shared/interfaces/phone-number.interface';
-import { TranslatePipe } from '../../../../shared/pipes/translate.pipe';
-import { TranslationService } from '../../../../shared/services/translation.service';
-import { ThemeService } from '../../../../shared/services/theme.service';
+import { PhoneNumber } from '@shared/interfaces/phone-number.interface';
+import { TranslatePipe } from '@shared/pipes/translate.pipe';
+import { TranslationService } from '@shared/services/translation.service';
+import { ThemeService } from '@shared/services/theme.service';
 
 @Component({
   selector: 'app-number-list',

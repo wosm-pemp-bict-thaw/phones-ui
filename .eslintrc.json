@@ -30,6 +30,29 @@
             "prefix": "app",
             "style": "kebab-case"
           }
+        ],
+        "sort-imports": [
+          "error",
+          {
+            "ignoreCase": true,
+            "ignoreDeclarationSort": true,
+            "ignoreMemberSort": false,
+            "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+          }
+        ],
+        "import/order": [
+          "error",
+          {
+            "groups": [
+              ["builtin", "external"],
+              ["internal", "sibling", "parent", "index"]
+            ],
+            "newlines-between": "always",
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            }
+          }
         ]
       }
     },

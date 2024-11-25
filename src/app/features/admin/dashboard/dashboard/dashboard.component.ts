@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NumberListComponent } from '../number-list/number-list.component';
 import { NumberService } from '../services/number.service';
 import { FilterComponent } from '../filter/filter.component';
-import { TranslatePipe } from '../../../../shared/pipes/translate.pipe';
+import { TranslatePipe } from '@shared/pipes/translate.pipe';
 import { Router } from '@angular/router';
 
 @Component({

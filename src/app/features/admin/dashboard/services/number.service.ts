@@ -1,8 +1,8 @@
 import { inject, Injectable, signal, Signal } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { PhoneNumber } from '../../../../shared/interfaces/phone-number.interface';
-import { environment } from '../../../../../environments/environment';
+import { PhoneNumber } from '@shared/interfaces/phone-number.interface';
+import { environment } from '@environments/environment';
 
 @Injectable({
   providedIn: 'root',
