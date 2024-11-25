@@ -42,14 +42,17 @@ export class TranslationService {
 
   translate(key: string): string {
     const keys = key.split('.');
-    let result = this.translations;
+    let result: string | Translations | undefined = this.translations;
 
     for (const k of keys) {
-      result = result?.[k];
-      if (!result) return key;
+      if (typeof result === 'object' && result) {
+        result = result[k];
+      } else {
+        return key;
+      }
     }
 
-    return result;
+    return typeof result === 'string' ? result : key;
   }
 
   setLanguage(lang: Langs): Promise<void> {

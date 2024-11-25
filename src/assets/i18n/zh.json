@@ -18,5 +18,10 @@
         "success": "成功"
       }
     }
+  },
+  "login": {
+    "sign_in": "登入",
+    "username": "用户名",
+    "password": "密码"
   }
 }

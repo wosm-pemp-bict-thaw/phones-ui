@@ -34,7 +34,7 @@ export class NumberService {
           this.loadingStateSignal.set('success');
         },
         error: (error) => {
-          console.error('Ошибка загрузки номеров с сервера:', error);
+          console.error('Error data loading from the server:', error);
           this.loadingStateSignal.set('error');
         },
       });
