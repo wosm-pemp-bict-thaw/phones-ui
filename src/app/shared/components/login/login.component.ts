@@ -25,8 +25,8 @@ export class LoginComponent {
   login(): void {
     // FIXME locals for msgs
     if (this.username === 'admin' && this.password === 'password') {
-      localStorage.setItem('authToken', 'mockToken');
-      this.auth.login('mockToken'); // FIXME token
+      localStorage.setItem('authToken', 'mysecrettoken');
+      this.auth.login('mysecrettoken'); // FIXME token
       this.router.navigate(['/dashboard']);
     } else {
       this.errorMessage = 'Invalid username or password';

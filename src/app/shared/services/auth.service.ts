@@ -20,7 +20,6 @@ export class AuthService {
   login(token: string): void {
     localStorage.setItem('authToken', token);
     this.isAuthenticatedSignal.set(true);
-    console.log('OK LOGGED');
   }
 
   logout(): void {
