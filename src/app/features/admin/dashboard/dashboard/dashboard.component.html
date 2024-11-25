@@ -19,15 +19,15 @@
     <div class="row text-center">
       <div class="col-12">
         <div class="spinner-border" role="status">
-          <span class="visually-hidden">Loading...</span>
+          <span class="visually-hidden">{{ 'dashboard.data_statuses.loading' | translate }}</span>
         </div>
-        <p class="text-muted">Loading data...</p>
+        <p class="text-muted">{{ 'dashboard.data_statuses.loading_muted' | translate }}.</p>
       </div>
     </div>
   } @placeholder {
     <div class="row text-center">
       <div class="col-12">
-        <p class="text-muted">Initializing...</p>
+        <p class="text-muted">{{ 'dashboard.data_statuses.initializing' | translate }}</p>
       </div>
     </div>
   }
@@ -36,9 +36,9 @@
     <div class="row text-center">
       <div class="col-12">
         <p class="text-danger fw-bold">
-          Failed to load data. Please try again later.
+          {{ 'dashboard.data_statuses.failed' | translate }}
         </p>
-        <button class="btn btn-primary mt-3" (click)="retry()">Retry</button>
+        <button class="btn btn-primary mt-3" (click)="retry()">{{ 'dashboard.data_statuses.retry' | translate }}</button>
       </div>
     </div>
   </ng-container>

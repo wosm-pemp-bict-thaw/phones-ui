@@ -5,12 +5,13 @@ import { ThemeService } from '../../services/theme.service';
 import { Langs, AVAILABLE_LANGUAGES } from '../../constants/langs.enum';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
+import { TranslatePipe } from '@shared/pipes/translate.pipe';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   standalone: true,
 })
 export class NavbarComponent {

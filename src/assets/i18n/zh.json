@@ -1,4 +1,7 @@
 {
+  "navbar": {
+    "logout": "登出"
+  },
   "dashboard": {
     "title": "仪表板",
     "subtitle": "欢迎来到仪表板",
@@ -9,6 +12,13 @@
       "messages": "消息",
       "inactive": "不活跃",
       "active": "积极的"
+    },
+    "data_statuses": {
+      "loading": "加载中...",
+      "loading_muted": "正在加载数据…",
+      "initializing": "初始化...",
+      "failed": "加载数据失败。请稍后重试。",
+      "retry": "重试"
     },
     "ui": {
       "filter": "按状态过滤",

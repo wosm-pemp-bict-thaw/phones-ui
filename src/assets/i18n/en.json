@@ -1,4 +1,7 @@
 {
+  "navbar": {
+    "logout": "Logout"
+  },
   "dashboard": {
     "title": "Dashboard",
     "subtitle": "Welcome to the dashboard",
@@ -9,6 +12,13 @@
       "messages": "Messages",
       "inactive": "Inactive",
       "active": "Active"
+    },
+    "data_statuses": {
+      "loading": "Loading...",
+      "loading_muted": "Loading data...",
+      "initializing": "Initializing...",
+      "failed": "Failed to load data. Please try again later.",
+      "retry": "Retry"
     },
     "ui": {
       "filter": "Filter by status",
