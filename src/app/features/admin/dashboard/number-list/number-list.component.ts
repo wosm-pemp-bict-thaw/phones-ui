@@ -1,9 +1,10 @@
-import { Component, computed, Input, OnInit, Signal, signal, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, computed, Input, OnInit, Signal, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
+
 import { NumberService } from '../services/number.service';
 import { PhoneNumber } from '../../../../shared/interfaces/phone-number.interface';
 import { TranslatePipe } from '../../../../shared/pipes/translate.pipe';
-import { ToastrService } from 'ngx-toastr';
 import { TranslationService } from '../../../../shared/services/translation.service';
 import { ThemeService } from '../../../../shared/services/theme.service';
 
@@ -12,7 +13,6 @@ import { ThemeService } from '../../../../shared/services/theme.service';
   standalone: true,
   imports: [CommonModule, TranslatePipe],
   templateUrl: './number-list.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NumberListComponent implements OnInit {
   private themeService = inject(ThemeService);

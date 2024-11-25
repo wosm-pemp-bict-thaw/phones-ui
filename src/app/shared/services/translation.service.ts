@@ -9,7 +9,9 @@ export class TranslationService {
   private translations: any = {};
   private currentLangSignal: WritableSignal<Langs> = signal(Langs.en);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.updateTextDirection(Langs.en); 
+  }
 
   loadTranslations(lang: Langs): Promise<void> {
     return this.http
@@ -17,6 +19,7 @@ export class TranslationService {
       .toPromise()
       .then((data) => {
         this.translations = data;
+        this.updateTextDirection(lang);
         this.currentLangSignal.set(lang);
       })
       .catch(() => {
@@ -44,5 +47,11 @@ export class TranslationService {
 
   setLanguage(lang: Langs): Promise<void> {
     return this.loadTranslations(lang);
+  }
+
+  private updateTextDirection(lang: Langs): void {
+    const isRtl = lang === Langs.ar;
+    document.documentElement.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', lang);
   }
 }

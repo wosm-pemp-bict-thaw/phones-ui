@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Themes } from '../constants/themes.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -11,23 +12,23 @@ export class ThemeService {
   }
 
   toggleTheme(): void {
-    const isDark = this.getCurrentTheme() === 'dark';
-    const newTheme = isDark ? 'light' : 'dark';
+    const isDark = this.getCurrentTheme() === Themes.DARK;
+    const newTheme = isDark ? Themes.LIGHT : Themes.DARK;
     this.setTheme(newTheme);
   }
 
-  private setTheme(theme: 'light' | 'dark'): void {
+  private setTheme(theme: Themes): void {
     document.documentElement.setAttribute('data-bs-theme', theme);
     localStorage.setItem(this.themeKey, theme);
   }
 
   private loadTheme(): void {
-    const savedTheme = localStorage.getItem(this.themeKey) as 'light' | 'dark' | null;
-    const defaultTheme = savedTheme || 'light';
+    const savedTheme = localStorage.getItem(this.themeKey) as Themes | null;
+    const defaultTheme = savedTheme || Themes.LIGHT;
     this.setTheme(defaultTheme);
   }
 
-  getCurrentTheme(): 'light' | 'dark' {
-    return document.documentElement.getAttribute('data-bs-theme') as 'light' | 'dark';
+  getCurrentTheme(): Themes.DARK | Themes.LIGHT {
+    return document.documentElement.getAttribute('data-bs-theme') as Themes.DARK | Themes.LIGHT;
   }
 }

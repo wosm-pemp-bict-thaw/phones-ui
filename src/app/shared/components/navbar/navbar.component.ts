@@ -5,6 +5,7 @@ import { ThemeService } from '../../services/theme.service';
 import { Langs, LangNames, LangIcons, AVAILABLE_LANGUAGES, AVAILABLE_LANGUAGES_DICT } from '../../constants/langs.enum';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
+import { Themes } from '../../constants/themes.enum';
 
 @Component({
   selector: 'app-navbar',
@@ -20,7 +21,14 @@ export class NavbarComponent {
   private authService = inject(AuthService);
 
   isAuthenticated = computed(() => this.authService.isAuthenticated());
-  isDarkTheme = this.themeService.getCurrentTheme;
+  currentTheme = this.themeService.getCurrentTheme;
+  theme = false;
+  // get isDarkTheme(): boolean {
+  //   return this.theme === Themes.DARK;
+  // }
+  // get isLightTheme(): boolean {
+  //   return this.theme === Themes.LIGHT;
+  // }
   currentLang = this.translate.currentLang;
 
   availableLanguages = AVAILABLE_LANGUAGES;

@@ -1,4 +1,4 @@
-<nav *ngIf="isAuthenticated()" class="navbar navbar-expand-lg navbar-light bg-light px-3" [ngClass]="{ 'bg-dark navbar-dark': isDarkTheme(), 'bg-light navbar-light': !isDarkTheme() }">
+<nav *ngIf="isAuthenticated()" class="navbar navbar-expand-lg navbar-light bg-light px-3" [ngClass]="{ 'bg-dark navbar-dark': currentTheme(), 'bg-light navbar-light': !currentTheme() }">
     <div class="container-fluid">
       <a class="navbar-brand">
         Phones
@@ -33,8 +33,8 @@
                         <button
                           class="btn btn-sm d-flex align-items-center w-100"
                           [ngClass]="{
-                            'btn-light': !isDarkTheme(),
-                            'btn-dark text-light': isDarkTheme()
+                            'btn-light': theme,
+                            'btn-dark text-light': theme
                           }"
                           (click)="changeLanguage(lang.code)"
                         >
