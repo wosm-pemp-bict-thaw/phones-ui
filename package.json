@@ -13,6 +13,9 @@
     "prepare": "npx husky"
   },
   "lint-staged": {
+    "*.{ts,html}": [
+      "eslint --fix"
+    ],
     "*.{ts,html,css,scss,json,md}": [
       "prettier --write"
     ]
