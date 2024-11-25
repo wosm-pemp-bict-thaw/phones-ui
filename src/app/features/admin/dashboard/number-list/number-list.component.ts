@@ -1,10 +1,11 @@
-import { Component, computed, Input, OnInit, Signal, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, computed, Input, OnInit, Signal, signal, ChangeDetectionStrategy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NumberService } from '../services/number.service';
 import { PhoneNumber } from '../../../../shared/interfaces/phone-number.interface';
 import { TranslatePipe } from '../../../../shared/pipes/translate.pipe';
 import { ToastrService } from 'ngx-toastr';
 import { TranslationService } from '../../../../shared/services/translation.service';
+import { ThemeService } from '../../../../shared/services/theme.service';
 
 @Component({
   selector: 'app-number-list',
@@ -14,6 +15,8 @@ import { TranslationService } from '../../../../shared/services/translation.serv
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NumberListComponent implements OnInit {
+  private themeService = inject(ThemeService);
+
   numbers!: Signal<PhoneNumber[]>; 
   sortColumn = signal<'id' | 'number' | 'messages' | ''>('');
   sortDirection = signal<'asc' | 'desc'>('asc');
@@ -40,7 +43,7 @@ export class NumberListComponent implements OnInit {
   constructor(
     private toastr: ToastrService,
     private translate: TranslationService,
-    private numberService: NumberService
+    private numberService: NumberService,
   ) {}
 
   ngOnInit(): void {

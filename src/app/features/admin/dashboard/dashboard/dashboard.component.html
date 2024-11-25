@@ -1,7 +1,7 @@
 <div class="container py-5">
   @defer (when isSuccess()) {
     <div class="row mb-4">
-      <div class="col-12 col-lg-6">
+      <div class="col-12  offset-lg-6 col-lg-6">
         <app-filter (statusChange)="onStatusChange($event)"></app-filter>
       </div>
     </div>

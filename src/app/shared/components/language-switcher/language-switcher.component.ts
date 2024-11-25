@@ -7,7 +7,8 @@ import { Langs, LangNames, LangIcons } from '../../constants/langs.enum';
   selector: 'app-language-switcher',
   imports: [CommonModule],
   templateUrl: './language-switcher.component.html',
-  styleUrl: './language-switcher.component.css'
+  styleUrl: './language-switcher.component.css',
+  standalone: true
 })
 export class LanguageSwitcherComponent {
   isMenuOpen = false;
