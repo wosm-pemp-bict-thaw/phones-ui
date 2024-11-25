@@ -1,13 +1,21 @@
 <div class="language-switcher">
-  <i class="bi-gear" (click)="toggleLanguageMenu()"></i>
-  <div *ngIf="isMenuOpen" class="language-menu">
     <button
-      *ngFor="let lang of availableLanguages"
-      class="btn btn-sm btn-light d-flex align-items-center"
-      (click)="changeLanguage(lang.code)"
+      type="button"
+      class="btn btn-link p-0"
+      (click)="toggleLanguageMenu()"
+      aria-label="Toggle language menu"
     >
-      <span class="flag-icon me-2"></span>
-      {{ lang.flag }}&nbsp;{{ lang.name }}
+      <i class="bi-gear"></i>
     </button>
+    <div *ngIf="isMenuOpen" class="language-menu">
+      <button
+        *ngFor="let lang of availableLanguages"
+        class="btn btn-sm btn-light d-flex align-items-center"
+        (click)="changeLanguage(lang.code)"
+      >
+        <span class="flag-icon me-2"></span>
+        {{ lang.flag }}&nbsp;{{ lang.name }}
+      </button>
+    </div>
   </div>
-</div>
+  

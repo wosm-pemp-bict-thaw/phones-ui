@@ -1,12 +1,13 @@
 import { computed, Injectable, signal, WritableSignal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AVAILABLE_LANGUAGES_DICT, Langs } from '../constants/langs.enum';
+import { Translations } from '../interfaces/translations.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TranslationService {
-  private translations: any = {};
+  private translations: Translations = {};
   private currentLangSignal: WritableSignal<Langs> = signal(Langs.en);
 
   constructor(private http: HttpClient) {
@@ -15,12 +16,16 @@ export class TranslationService {
 
   loadTranslations(lang: Langs): Promise<void> {
     return this.http
-      .get(`./assets/i18n/${lang}.json`)
+      .get<Translations>(`./assets/i18n/${lang}.json`)
       .toPromise()
       .then((data) => {
-        this.translations = data;
-        this.updateTextDirection(lang);
-        this.currentLangSignal.set(lang);
+        if (data) {
+          this.translations = data;
+          this.updateTextDirection(lang);
+          this.currentLangSignal.set(lang);
+        } else {
+          console.error('No translations found for language:', lang);
+        }
       })
       .catch(() => {
         console.error(`Could not load translations for language: ${lang}`);
