@@ -67,8 +67,12 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
 
     // Act
-    const filterComponent = fixture.debugElement.query(By.directive(FilterComponent));
-    const numberListComponent = fixture.debugElement.query(By.directive(NumberListComponent));
+    const filterComponent = fixture.debugElement.query(
+      By.directive(FilterComponent)
+    );
+    const numberListComponent = fixture.debugElement.query(
+      By.directive(NumberListComponent)
+    );
 
     // Assert
     expect(filterComponent).toBeTruthy();
@@ -82,10 +86,14 @@ describe('DashboardComponent', () => {
 
     // Act
     const errorText = fixture.debugElement.query(By.css('.text-danger'));
-    const retryButton = fixture.debugElement.query(By.css('button.btn-primary'));
+    const retryButton = fixture.debugElement.query(
+      By.css('button.btn-primary')
+    );
 
     // Assert
-    expect(errorText.nativeElement.textContent).toContain('Failed to load data. Please try again later.');
+    expect(errorText.nativeElement.textContent).toContain(
+      'Failed to load data. Please try again later.'
+    );
     expect(retryButton).toBeTruthy();
   });
 
@@ -96,7 +104,9 @@ describe('DashboardComponent', () => {
     spyOn(component, 'retry');
 
     // Act
-    const retryButton = fixture.debugElement.query(By.css('button.btn-primary'));
+    const retryButton = fixture.debugElement.query(
+      By.css('button.btn-primary')
+    );
     retryButton.nativeElement.click();
 
     // Assert

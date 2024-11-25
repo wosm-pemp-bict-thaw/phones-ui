@@ -1,4 +1,12 @@
-import { Component, computed, Input, OnInit, Signal, signal, inject } from '@angular/core';
+import {
+  Component,
+  computed,
+  Input,
+  OnInit,
+  Signal,
+  signal,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 
@@ -17,10 +25,10 @@ import { ThemeService } from '../../../../shared/services/theme.service';
 export class NumberListComponent implements OnInit {
   private themeService = inject(ThemeService);
 
-  numbers!: Signal<PhoneNumber[]>; 
+  numbers!: Signal<PhoneNumber[]>;
   sortColumn = signal<'id' | 'number' | 'messages' | ''>('');
   sortDirection = signal<'asc' | 'desc'>('asc');
-  
+
   sortedNumbers = computed(() => {
     const column = this.sortColumn();
     const direction = this.sortDirection();
@@ -43,13 +51,12 @@ export class NumberListComponent implements OnInit {
   constructor(
     private toastr: ToastrService,
     private translate: TranslationService,
-    private numberService: NumberService,
+    private numberService: NumberService
   ) {}
 
   ngOnInit(): void {
     this.numbers = this.numberService.numbers;
   }
-
 
   @Input() currentFilter!: Signal<'all' | 'active' | 'inactive'>;
 
@@ -67,8 +74,10 @@ export class NumberListComponent implements OnInit {
     this.numberService.toggleStatus(number);
 
     const title = this.translate.translate('dashboard.ui.toast.success');
-    const message = this.translate.translate('dashboard.ui.toast.statusChanged');
-  
+    const message = this.translate.translate(
+      'dashboard.ui.toast.statusChanged'
+    );
+
     this.toastr.success(message, title, {
       timeOut: 3000,
     });

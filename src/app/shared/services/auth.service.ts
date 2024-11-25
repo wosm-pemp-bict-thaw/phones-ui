@@ -16,11 +16,11 @@ export class AuthService {
     const token = localStorage.getItem('authToken');
     this.isAuthenticatedSignal.set(!!token);
   }
-  
+
   login(token: string): void {
     localStorage.setItem('authToken', token);
     this.isAuthenticatedSignal.set(true);
-    console.log("OK LOGGED")
+    console.log('OK LOGGED');
   }
 
   logout(): void {

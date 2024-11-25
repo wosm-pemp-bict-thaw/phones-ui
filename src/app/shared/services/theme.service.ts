@@ -29,6 +29,8 @@ export class ThemeService {
   }
 
   getCurrentTheme(): Themes.DARK | Themes.LIGHT {
-    return document.documentElement.getAttribute('data-bs-theme') as Themes.DARK | Themes.LIGHT;
+    return document.documentElement.getAttribute('data-bs-theme') as
+      | Themes.DARK
+      | Themes.LIGHT;
   }
 }

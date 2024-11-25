@@ -7,7 +7,7 @@ import { ThemeService } from '../../services/theme.service';
   imports: [CommonModule],
   templateUrl: './theme-toggle.component.html',
   styleUrl: './theme-toggle.component.css',
-  standalone: true
+  standalone: true,
 })
 export class ThemeToggleComponent {
   private themeService = inject(ThemeService);

@@ -1,6 +1,8 @@
-<button class="btn btn-secondary position-fixed bottom-0 end-0 m-3" (click)="toggleTheme()">
-    <i class="bi bi-brightness-high" *ngIf="isDarkTheme()"></i>
-    <i class="bi bi-moon" *ngIf="!isDarkTheme()"></i>
-    <span class="ms-2">{{ isDarkTheme() ? 'Dark' : 'Light' }}</span>
-  </button>
-  
+<button
+  class="btn btn-secondary position-fixed bottom-0 end-0 m-3"
+  (click)="toggleTheme()"
+>
+  <i class="bi bi-brightness-high" *ngIf="isDarkTheme()"></i>
+  <i class="bi bi-moon" *ngIf="!isDarkTheme()"></i>
+  <span class="ms-2">{{ isDarkTheme() ? 'Dark' : 'Light' }}</span>
+</button>

@@ -35,7 +35,7 @@
           class="badge"
           [ngClass]="{
             'bg-success': number.status === 'active',
-            'bg-danger': number.status === 'inactive'
+            'bg-danger': number.status === 'inactive',
           }"
         >
           {{ number.status }}
@@ -46,7 +46,7 @@
           class="btn btn-sm"
           [ngClass]="{
             'btn-success': number.status === 'inactive',
-            'btn-danger': number.status === 'active'
+            'btn-danger': number.status === 'active',
           }"
           (click)="toggleStatus(number)"
         >

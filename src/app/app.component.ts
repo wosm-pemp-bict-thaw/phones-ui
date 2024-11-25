@@ -10,7 +10,13 @@ import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, LanguageSwitcherComponent, ThemeToggleComponent, NavbarComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    LanguageSwitcherComponent,
+    ThemeToggleComponent,
+    NavbarComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true,
@@ -19,11 +25,8 @@ export class AppComponent implements OnInit {
   private authService = inject(AuthService);
   isAuthenticated = this.authService.isAuthenticated;
 
-  constructor(
-    private translationService: TranslationService,
-  ) {}
+  constructor(private translationService: TranslationService) {}
 
-  
   ngOnInit() {
     this.translationService.loadTranslations(Langs.en);
   }

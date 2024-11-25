@@ -1,60 +1,66 @@
-<nav *ngIf="isAuthenticated()" class="navbar navbar-expand-lg navbar-light bg-light px-3" [ngClass]="{ 'bg-dark navbar-dark': currentTheme(), 'bg-light navbar-light': !currentTheme() }">
-    <div class="container-fluid">
-      <a class="navbar-brand">
-        Phones
-      </a>
-  
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-  
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto align-items-center">
-            <li class="nav-item dropdown">
-                <button
-                  class="btn btn-link nav-link dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton"
-                  (click)="toggleDropdown($event)"
-                  aria-expanded="false"
-                >
-                {{currentLangDetails().flag}} {{currentLangDetails().name}}
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li *ngFor="let lang of availableLanguages">
-                        <button
-                          class="btn btn-sm d-flex align-items-center w-100"
-                          (click)="changeLanguage(lang.code)"
-                        >
-                          <span class="flag-icon me-2"></span>
-                          {{ lang.flag }}&nbsp;{{ lang.name }}
-                        </button>
-                      </li>
-                </ul>
-              </li>
-              
-  
-          <li class="nav-item">
-            <button class="btn btn-outline-secondary nav-link" (click)="toggleTheme()">
-              <i class="bi bi-moon"></i>
-            </button>
-          </li>
-  
-          <li class="nav-item">
-            <button class="btn btn-outline-danger nav-link" (click)="logout()">
-              <i class="bi bi-box-arrow-right"></i> Logout
-            </button>
-          </li>
-        </ul>
-      </div>
+<nav
+  *ngIf="isAuthenticated()"
+  class="navbar navbar-expand-lg navbar-light bg-light px-3"
+  [ngClass]="{
+    'bg-dark navbar-dark': currentTheme(),
+    'bg-light navbar-light': !currentTheme(),
+  }"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand"> Phones </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item dropdown">
+          <button
+            class="btn btn-link nav-link dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            (click)="toggleDropdown($event)"
+            aria-expanded="false"
+          >
+            {{ currentLangDetails().flag }} {{ currentLangDetails().name }}
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li *ngFor="let lang of availableLanguages">
+              <button
+                class="btn btn-sm d-flex align-items-center w-100"
+                (click)="changeLanguage(lang.code)"
+              >
+                <span class="flag-icon me-2"></span>
+                {{ lang.flag }}&nbsp;{{ lang.name }}
+              </button>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <button
+            class="btn btn-outline-secondary nav-link"
+            (click)="toggleTheme()"
+          >
+            <i class="bi bi-moon"></i>
+          </button>
+        </li>
+
+        <li class="nav-item">
+          <button class="btn btn-outline-danger nav-link" (click)="logout()">
+            <i class="bi bi-box-arrow-right"></i> Logout
+          </button>
+        </li>
+      </ul>
     </div>
-  </nav>
-  
+  </div>
+</nav>

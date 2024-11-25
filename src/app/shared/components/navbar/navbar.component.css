@@ -1,14 +1,13 @@
 .navbar-brand img {
-    border-radius: 50%;
-  }
-  
-  .flag-icon {
-    width: 20px;
-    height: 15px;
-    display: inline-block;
-  }
-  
-  .nav-item .btn {
-    border: none;
-  }
-  
+  border-radius: 50%;
+}
+
+.flag-icon {
+  width: 20px;
+  height: 15px;
+  display: inline-block;
+}
+
+.nav-item .btn {
+  border: none;
+}

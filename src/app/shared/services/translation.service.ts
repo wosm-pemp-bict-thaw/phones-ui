@@ -10,7 +10,7 @@ export class TranslationService {
   private currentLangSignal: WritableSignal<Langs> = signal(Langs.en);
 
   constructor(private http: HttpClient) {
-    this.updateTextDirection(Langs.en); 
+    this.updateTextDirection(Langs.en);
   }
 
   loadTranslations(lang: Langs): Promise<void> {
@@ -30,8 +30,10 @@ export class TranslationService {
   get currentLang() {
     return this.currentLangSignal.asReadonly();
   }
-  
-  currentLangDetails = computed(() => AVAILABLE_LANGUAGES_DICT[this.currentLangSignal()]);
+
+  currentLangDetails = computed(
+    () => AVAILABLE_LANGUAGES_DICT[this.currentLangSignal()]
+  );
 
   translate(key: string): string {
     const keys = key.split('.');

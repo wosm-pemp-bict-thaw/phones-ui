@@ -13,6 +13,8 @@ export class FilterComponent {
 
   onFilterChange(event: Event): void {
     const selectElement = event.target as HTMLSelectElement;
-    this.statusChange.emit(selectElement.value as 'all' | 'active' | 'inactive');
+    this.statusChange.emit(
+      selectElement.value as 'all' | 'active' | 'inactive'
+    );
   }
 }
